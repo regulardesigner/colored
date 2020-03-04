@@ -1,0 +1,47 @@
+/* X-small devices (mobile portrait down 576px) */
+@media (max-width: 575.99px) {
+  .app {
+    font-size: 11.5em;
+  }
+  .app-info {
+    font-size: .10em;
+  }
+
+  .app-color-palette {
+    visibility: hidden;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .app {
+    font-size: 15em;
+  }
+  .app-info {
+    font-size: .0625em;
+  }
+
+  .app-color-palette {
+    display: block;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .app {
+    font-size: 20em;
+  }
+  .app-info {
+    font-size: .05em;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
