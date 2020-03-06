@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { FaPlus } from 'react-icons/fa';
 import Utils from './utils';
 import { ColorsContext } from './Contexts/ColorsContext';
 
@@ -17,7 +18,7 @@ const Color = (props) => {
         style={{ color: `#${hex}`, backgroundColor: Utils.calculateHue(hex) }}
         onClick={handleSaveColor}
       >
-        ADD COLOR
+        ADD
       </button>
     </div>
   )

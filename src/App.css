@@ -29,12 +29,43 @@ input {
   font-weight: bold;
   font-size: 1em;
   width: 1.8em;
+  height: .8em;
   outline: none;
   border-bottom: 12px solid transparent;
+  margin-bottom: .2em;
   text-transform: capitalize;
   transition: color ease .8s;
   overflow: visible;
+  padding-top: .1rem;
+}
 
+.app-info svg {
+  vertical-align: top;
+}
+
+.app-info--random-color {
+  text-decoration: none;
+  padding: 1.4rem 2.6rem 1.2rem 2.2rem;
+  font-weight: bold;
+  border-radius: 2rem;
+  box-shadow: 0px 4px 10px 0px rgba(0,0,0,.40);
+  margin-top: 1rem;
+  transition: color ease .8s;
+  display: inline-block;
+}
+
+.app-info--random-color:hover {
+  box-shadow: 0px 8px 20px 0px rgba(0,0,0,.30);
+}
+
+.app-info--random-color.black {
+  background: rgba(255,255,255,.40);
+  background: linear-gradient(180deg, rgba(255,255,255,.55) 15%, rgba(255,255,255,.10) 100%);
+}
+
+.app-info--random-color.white {
+  background: rgba(0,0,0,.40);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.30) 10%, rgba(0,0,0,.15) 100%);
 }
 
 input:focus {
@@ -63,6 +94,23 @@ input:focus {
   bottom: -1em;
   margin-left:1rem;
   transition: all ease 200ms;
+}
+
+.saved-color-to-clipboard {
+  border: none;
+  margin: 0;
+  padding: .4rem;
+  position: absolute;
+  font-size: .4em;
+  color: inherit;
+  top:0rem;
+  right: 0rem;
+  cursor: pointer;
+  opacity: .6;
+}
+
+.saved-color:first-child {
+  margin-left: 0rem;
 }
 
 .saved-color--add-button {

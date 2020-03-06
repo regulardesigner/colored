@@ -7,7 +7,7 @@
     font-size: .10em;
   }
 
-  .app-color-palette {
+  .app-color-palette, .instruction {
     visibility: hidden;
   }
 }
@@ -20,10 +20,6 @@
   .app-info {
     font-size: .0625em;
   }
-
-  .app-color-palette {
-    display: block;
-  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -33,6 +29,9 @@
   }
   .app-info {
     font-size: .05em;
+  }
+  .app-color-palette, .instruction {
+    visibility: block;
   }
 }
 

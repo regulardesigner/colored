@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { FaRedoAlt, FaArrowAltCircleDown } from 'react-icons/fa';
 
 import Utils from './utils';
 import { ColorsContext } from './Contexts/ColorsContext';
-
 import './App.css';
+
 import Color from './Color';
 import AddColor from './AddColor';
 
@@ -22,6 +23,15 @@ const App = () => {
     setBckColor(Utils.randomColor());
   }
 
+  const ColorPalette = () => {
+    return (
+      <div className="app-color-palette">
+        { colors.map((color, index) => <Color key={index} hex={color} border={'none'} /> ) }
+        { colors.length <= 4 && <AddColor hex={bckColor} /> }
+      </div>
+    )
+  }
+
   return (
   <ColorsContext.Provider value={{ colors, setColors, bckColor, setBckColor }}>
     <div className="app" style={{ backgroundColor: '#'+bckColor }}>
@@ -29,29 +39,24 @@ const App = () => {
         #<input style={{ display: 'inline-block', color: Utils.calculateHue(bckColor) }} type="text" value={bckColor} onChange={handleColorChange}/>
       </div>
       <div className="app-info">
-        <p
-          style={
-            { color: Utils.calculateHue(bckColor),
-              fontWeight: '100' 
-            }
-          }
-        >
-          <span
-            role='img'
-            aria-label='yarn ball'
-          >🧶</span>
-          <a
-            style={{ color: 'inherit' }} 
-            href="#random" 
-            onClick={refreshColor}
-          >Discover another random color.
-          </a>
-        </p>
+        <a
+          className={`app-info--random-color ${Utils.calculateHue(bckColor)}`}
+          style={{ color: Utils.calculateHue(bckColor) }} 
+          href="#random" 
+          onClick={refreshColor}
+        ><FaRedoAlt /> Give me another color
+        </a>
       </div>
-      <div className="app-color-palette">
-        { colors.map((color, index) => <Color key={index} hex={color} border={'none'} /> ) }
-        <AddColor hex={bckColor} />
+      <div 
+        className="instruction"
+        style={{
+          position: 'absolute',
+          bottom: '80px',
+          color: Utils.calculateHue(bckColor)
+        }}>
+        <p style={{ fontSize: '.05em' }}>Save your favorite colors here.</p>
       </div>
+      <ColorPalette />
     </div>
   </ColorsContext.Provider>
   );
