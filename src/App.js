@@ -104,7 +104,7 @@ const App = () => {
         >
           <span role="img" aria-label="clipboard">📋 </span>Copied!
         </div>
-        <header>
+        <header style={{display: 'none'}}>
           <nav>
             <ul>
               <li className="main"><FaEllipsisV /></li>
