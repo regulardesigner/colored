@@ -9,11 +9,12 @@ import Color from './Color';
 
 const App = () => {
   let [bckColor, setBckColor] = useState(Utils.randomColor())
-  let [ clipboardStatus, setClipboardStatus ] = useState(false)
-  let [ videoStatus, setVideoStatus ] = useState(false);
+  let [clipboardStatus, setClipboardStatus] = useState(false)
+  let [videoStatus, setVideoStatus] = useState(false);
   let [colors, setColors] = useState([])
   let [addButtonStatus, setAddButtonStatus] = useState(false)
   let [themeColorsLimite] = useState(4)
+  let [pageHeight, setPageHeight] = useState(window.innerHeight)
 
   const isMobile = Utils.isMobileDevice();
 
@@ -43,7 +44,7 @@ const App = () => {
 
   const handleMobileDemo = (event) => {
     event.preventDefault();
-    if(videoStatus) {
+    if (videoStatus) {
       setVideoStatus(false)
     } else {
       setVideoStatus(true)
@@ -69,10 +70,10 @@ const App = () => {
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen="allowfullscreen"
-            mozallowfullscreen="mozallowfullscreen" 
-            msallowfullscreen="msallowfullscreen" 
-            oallowfullscreen="oallowfullscreen" 
-            webkitallowfullscreen="webkitallowfullscreen"> 
+            mozallowfullscreen="mozallowfullscreen"
+            msallowfullscreen="msallowfullscreen"
+            oallowfullscreen="oallowfullscreen"
+            webkitallowfullscreen="webkitallowfullscreen">
           </iframe>
           <button onClick={handleMobileDemo} className="button button-close">Close</button>
         </div>
@@ -81,20 +82,26 @@ const App = () => {
   }
 
   useEffect(() => {
-    if(clipboardStatus) {
-      window.setTimeout(()=> {setClipboardStatus(false)}, 2000);
+    if (clipboardStatus) {
+      window.setTimeout(() => { setClipboardStatus(false) }, 2000);
     }
-  })
+
+    const handleResize = () => {
+      setPageHeight(window.innerHeight);
+    }
+
+    window.addEventListener('resize', handleResize)
+  }, [clipboardStatus])
 
   return (
     <ColorsContext.Provider value={{ colors, setColors, bckColor, setBckColor, themeColorsLimite, setAddButtonStatus }}>
-      <div className="app" style={{ backgroundColor: '#' + bckColor, height: window.innerHeight }}>
+      <div className="app" style={{ backgroundColor: '#' + bckColor, height: pageHeight }}>
         {isMobile && <MobileWarning />}
         {isMobile && <VideoDemo />}
         <div
           className={clipboardStatus ? 'message show' : 'message hide'}
           style={{ color: Utils.calculateHue(bckColor) }}
-          >
+        >
           <span role="img" aria-label="clipboard">📋 </span>Copied!
         </div>
         <header>
@@ -122,14 +129,14 @@ const App = () => {
               <FaRegCopy /> <span>Copy to clipboard</span>
             </button>
             {!isMobile && (
-            <button
-              className={`button add-to-theme  ${Utils.calculateHue(bckColor)}`}
-              title={`Add #${bckColor} to your favorite colors`}
-              style={{ color: Utils.calculateHue(bckColor) }}
-              onClick={addColorToFav}
-              disabled={addButtonStatus}>
-              <FaPlus /> <span>Add to fav</span>
-            </button>
+              <button
+                className={`button add-to-theme  ${Utils.calculateHue(bckColor)}`}
+                title={`Add #${bckColor} to your favorite colors`}
+                style={{ color: Utils.calculateHue(bckColor) }}
+                onClick={addColorToFav}
+                disabled={addButtonStatus}>
+                <FaPlus /> <span>Add to fav</span>
+              </button>
             )}
           </div>
         </div>
