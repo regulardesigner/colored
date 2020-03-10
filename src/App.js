@@ -135,7 +135,7 @@ const App = () => {
                 style={{ color: Utils.calculateHue(bckColor) }}
                 onClick={addColorToFav}
                 disabled={addButtonStatus}>
-                <FaPlus /> <span>Add to fav</span>
+                <FaPlus /> <span>Add to theme</span>
               </button>
             )}
           </div>
