@@ -31,19 +31,34 @@ h1 {
 
 .button {
   width: auto;
-  border: none;
+  border-style: solid;
+  border-width: 2 px;
   padding: .6rem 1.2rem .2rem 1rem;
   border-radius: 1rem;
   font-size: 1.4em;
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
+.button:focus {
+  border-color: white;
+}
+
 .button.black {
+  border-color: white;
   background-color: white;
 }
 
+.button:focus.black {
+  border: 2px solid rgba(0,0,0,.8);
+}
+
 .button.white {
+  border-color: black;
   background-color: black;
+}
+
+.button:focus.white {
+  border: 2px solid rgba(255,255,255,.8);
 }
 
 .get-random-color, .copy-to-clipboard, .add-to-theme {
@@ -149,6 +164,28 @@ nav .main {
   font-size: 2em;
   position: absolute;
   transition: top ease 350ms;
+}
+
+.desktop {
+  overflow: hidden;
+  position: absolute;
+  top:-10rem;
+  right: 1rem;
+  font-size: 1.4em;
+  background-color: inherit;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,.45);
+  transition: top ease 500ms;
+  transition-delay: 1000ms;
+}
+
+.desktop.in {
+  top: 1rem;
+}
+
+.desktop::before {
+  content: "☝️ ";
 }
 
 .show {

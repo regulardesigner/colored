@@ -10,16 +10,15 @@ import Color from './Color';
 const App = () => {
   let [bckColor, setBckColor] = useState(Utils.randomColor())
   let [clipboardStatus, setClipboardStatus] = useState(false)
+  let [messageCssClass, setMessageCssClass] = useState("");
   let [videoStatus, setVideoStatus] = useState(false);
   let [colors, setColors] = useState([])
   let [addButtonStatus, setAddButtonStatus] = useState(false)
   let [themeColorsLimite] = useState(4)
-  let [pageHeight, setPageHeight] = useState(window.innerHeight)
 
   const isMobile = Utils.isMobileDevice();
 
   const refreshColor = (event) => {
-    //event.preventDefault();
     setBckColor(Utils.randomColor());
   }
 
@@ -60,6 +59,15 @@ const App = () => {
     )
   }
 
+  const DesktopPreview = () => {
+    return (
+      <div
+        className="desktop in"
+        style={{ color: `#${bckColor}`,backgroundColor: Utils.calculateHue(bckColor) }}
+      >How to use colored.</div>
+    )
+  }
+
   const VideoDemo = () => {
     return (
       <div className={videoStatus ? 'video-wrapper open' : 'video-wrapper close'}>
@@ -91,6 +99,7 @@ const App = () => {
     <ColorsContext.Provider value={{ colors, setColors, bckColor, setBckColor, themeColorsLimite, setAddButtonStatus }}>
       <div className="app" style={{ backgroundColor: '#' + bckColor }}>
         {isMobile && <MobileWarning />}
+        {!isMobile && <DesktopPreview />}
         {isMobile && <VideoDemo />}
         <div
           className={clipboardStatus ? 'message show' : 'message hide'}
