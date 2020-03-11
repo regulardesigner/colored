@@ -64,16 +64,17 @@ const App = () => {
       <div
         className="desktop in"
         style={{ color: `#${bckColor}`,backgroundColor: Utils.calculateHue(bckColor) }}
-      >How to use colored.</div>
+      ><a href="/#what-can-i-do" onClick={handleMobileDemo}>How to use colored.</a></div>
     )
   }
 
   const VideoDemo = () => {
     return (
       <div className={videoStatus ? 'video-wrapper open' : 'video-wrapper close'}>
-        <div className="video">
           <iframe
             title="video"
+            width="560"
+            height="349"
             src="https://www.youtube.com/embed/CrRG_rF6o4M"
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -84,7 +85,6 @@ const App = () => {
             webkitallowfullscreen="webkitallowfullscreen">
           </iframe>
           <button onClick={handleMobileDemo} className="button button-close">Close</button>
-        </div>
       </div>
     )
   }
@@ -100,7 +100,7 @@ const App = () => {
       <div className="app" style={{ backgroundColor: '#' + bckColor }}>
         {isMobile && <MobileWarning />}
         {!isMobile && <DesktopPreview />}
-        {isMobile && <VideoDemo />}
+        <VideoDemo />
         <div
           className={clipboardStatus ? 'message show' : 'message hide'}
           style={{ color: Utils.calculateHue(bckColor) }}
