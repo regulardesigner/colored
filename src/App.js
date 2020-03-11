@@ -85,17 +85,11 @@ const App = () => {
     if (clipboardStatus) {
       window.setTimeout(() => { setClipboardStatus(false) }, 2000);
     }
-
-    const handleResize = () => {
-      setPageHeight(window.innerHeight);
-    }
-
-    window.addEventListener('resize', handleResize)
   }, [clipboardStatus])
 
   return (
     <ColorsContext.Provider value={{ colors, setColors, bckColor, setBckColor, themeColorsLimite, setAddButtonStatus }}>
-      <div className="app" style={{ backgroundColor: '#' + bckColor, height: pageHeight }}>
+      <div className="app" style={{ backgroundColor: '#' + bckColor }}>
         {isMobile && <MobileWarning />}
         {isMobile && <VideoDemo />}
         <div
@@ -131,7 +125,7 @@ const App = () => {
             {!isMobile && (
               <button
                 className={`button add-to-theme  ${Utils.calculateHue(bckColor)}`}
-                title={`Add #${bckColor} to your favorite colors`}
+                title={`Add #${bckColor} to your color theme`}
                 style={{ color: Utils.calculateHue(bckColor) }}
                 onClick={addColorToFav}
                 disabled={addButtonStatus}>
