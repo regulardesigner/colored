@@ -54,7 +54,7 @@ const App = () => {
       <div
         className="mobile warning"
         style={{ color: `#${bckColor}`, backgroundColor: Utils.calculateHue(bckColor) }}
-      ><a href="/#what-can-i-do" onClick={handleMobileDemo}>See what you can do on a computer</a></div>
+      ><a href="/#what-can-i-do" onClick={handleMobileDemo}>See what you can do on a computer.</a></div>
     )
   }
 
@@ -63,13 +63,14 @@ const App = () => {
       <div
         className="desktop in"
         style={{ color: `#${bckColor}`,backgroundColor: Utils.calculateHue(bckColor) }}
-      ><a href="/#what-can-i-do" onClick={handleMobileDemo}>Watch how to use colored.</a></div>
+      ><a href="/#what-can-i-do" onClick={handleMobileDemo}>See how to use COLORED.</a></div>
     )
   }
 
   const VideoDemo = () => {
     return (
-      <div className={videoStatus ? 'video-wrapper open' : 'video-wrapper close'}>
+      <div className={videoStatus ? 'wrapper open' : 'wrapper close'} onClick={handleMobileDemo}>
+        <div className="video-wrapper">
           <iframe
             title="video"
             width="560"
@@ -79,7 +80,7 @@ const App = () => {
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen="allowfullscreen">
           </iframe>
-          <button onClick={handleMobileDemo} className="button button-close">Close</button>
+        </div>
       </div>
     )
   }
