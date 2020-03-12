@@ -104,7 +104,7 @@ const App = () => {
           className={clipboardStatus ? 'message show' : 'message hide'}
           style={{ color: Utils.calculateHue(bckColor) }}
         >
-          <span role="img" aria-label="clipboard">📋 </span>Copied!
+          <span role="img" aria-label="clipboard">📋 </span>Copied to clipboard!
         </div>
         <header style={{display: 'none'}}>
           <nav>
