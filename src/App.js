@@ -19,6 +19,9 @@ const App = () => {
 
   const refreshColor = (event) => {
     setBckColor(Utils.randomColor());
+    if(navigator.vibrate) {
+      navigator.vibrate([85, 50, 85])
+    }
   }
 
   const hexToClopBoard = (event) => {
