@@ -10,7 +10,6 @@ import Color from './Color';
 const App = () => {
   let [bckColor, setBckColor] = useState(Utils.randomColor())
   let [clipboardStatus, setClipboardStatus] = useState(false)
-  let [messageCssClass, setMessageCssClass] = useState("");
   let [videoStatus, setVideoStatus] = useState(false);
   let [colors, setColors] = useState([])
   let [addButtonStatus, setAddButtonStatus] = useState(false)
@@ -64,7 +63,7 @@ const App = () => {
       <div
         className="desktop in"
         style={{ color: `#${bckColor}`,backgroundColor: Utils.calculateHue(bckColor) }}
-      ><a href="/#what-can-i-do" onClick={handleMobileDemo}>How to use colored.</a></div>
+      ><a href="/#what-can-i-do" onClick={handleMobileDemo}>Watch how to use colored.</a></div>
     )
   }
 
@@ -76,13 +75,9 @@ const App = () => {
             width="560"
             height="349"
             src="https://www.youtube.com/embed/CrRG_rF6o4M"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen="allowfullscreen"
-            mozallowfullscreen="mozallowfullscreen"
-            msallowfullscreen="msallowfullscreen"
-            oallowfullscreen="oallowfullscreen"
-            webkitallowfullscreen="webkitallowfullscreen">
+            allowFullScreen="allowfullscreen">
           </iframe>
           <button onClick={handleMobileDemo} className="button button-close">Close</button>
       </div>
